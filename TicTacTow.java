@@ -28,7 +28,25 @@ public class TicTacTow{
 
 
 
-    //function to check rows
+    /*Checking Rows Function
+     * Preconditions: 
+     * the board only conatins X, O, or N
+     * 
+     * Postconditions:
+     * False measns that there is no three in a row for X or O
+     * True means that there is a three in a row 
+     */
+
+     public boolean ckeckRows(){
+        
+        for(int r = 0; r < gameBoard.length; r++){
+            if(gameBoard[r][0].equals("N") == false && gameBoard[r][0].equals(gameBoard[r][1]) && gameBoard[r][1].equals(gameBoard[r][2])){
+                return true;
+            }
+        }
+        return false;
+     }
+    
 
 
 
