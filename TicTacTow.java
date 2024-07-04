@@ -1,9 +1,11 @@
 public class TicTacTow{
     private String[][] gameBoard;
+    private String playerLetter;
+    private String computerLetter;
     
     
     
-    public TicTacTow(String[][] gameArr){
+    public TicTacTow(String[][] gameArr, String player, String computer){
         gameBoard = gameArr;
         //set all spots to Open with the letter N
         for(int r = 0; r < gameBoard.length; r++){
@@ -12,6 +14,8 @@ public class TicTacTow{
             }
     
         }
+        playerLetter = player;
+        computerLetter = computer;
     }
  
 

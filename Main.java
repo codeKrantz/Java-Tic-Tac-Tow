@@ -4,7 +4,7 @@ class Main{
 
 
 
-        TicTacTow game = new TicTacTow(board);
+        TicTacTow game = new TicTacTow(board, "X", "O");
         game.printBoard();
     }
 }
