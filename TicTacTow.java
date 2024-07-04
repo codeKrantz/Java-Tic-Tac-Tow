@@ -77,8 +77,12 @@ public class TicTacTow{
     
 
 
-
-    //function to check all columns
+    /*Check All Rows Function 
+     * Pre-Conditions:
+     * Game Board contains only X, O, or N
+     * Post-Conditions:
+     * returns True if there is a three in a row in any one column for X or O
+    */
     public boolean ckeckColumns(){
         for(int c = 0; c < gameBoard[0].length; c++){
             if(gameBoard[0][c].equals("N") == false && gameBoard[0][c].equals(gameBoard[1][c]) && gameBoard[1][c].equals(gameBoard[2][c])){
@@ -90,6 +94,28 @@ public class TicTacTow{
 
 
     // function to check individual row
+    /*Individual Row Checking Function
+     * Pre-Conditions:
+     * colNum is an acceptable value
+     * The board has a three in a row a column\
+     * Post-Conditions:
+     * Returns which letter has a three in a row
+     * If there is no winner the functions returns the string "None"
+    */
+    public String checkIndividualColumn(int colNum){
+        if(gameBoard[0][colNum].equals("X") && gameBoard[1][colNum].equals("X") && gameBoard[2][colNum].equals("X")){
+            return "X";
+        }
+
+        else if(gameBoard[0][colNum].equals("O") && gameBoard[1][colNum].equals("O") && gameBoard[2][colNum].equals("O")){
+            return "O";
+        }
+
+
+
+
+        return "None";
+    }
 
 
     //function to check both diagonals
