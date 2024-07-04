@@ -46,6 +46,34 @@ public class TicTacTow{
         }
         return false;
      }
+
+
+
+     /*Individual Row Ckecking 
+     Preconditions:
+     This function will only be used once the total board checker has returned true to find who won
+     checks individual rows to find the winner
+      rowNum is an in the board
+      Post Conditions:
+      returns X for if X's win
+      returns O if O's win
+      returns None if there is no winner in that row
+
+     */
+     public String checkIndividualRow(int rowNum){
+        if(gameBoard[rowNum][0].equals("X") && gameBoard[rowNum][1].equals("X") && gameBoard[rowNum][2].equals("X")){
+            return "X";
+        }
+        else if (gameBoard[rowNum][0].equals("O") && gameBoard[rowNum][1].equals("O") && gameBoard[rowNum][2].equals("O")) {
+            return "O";
+        }
+// if this is not the winning row
+        return "None";
+     }
+   
+
+
+
     
 
 
