@@ -78,19 +78,30 @@ public class TicTacTow{
 
 
 
-    //function to check columns
+    //function to check all columns
+    public boolean ckeckColumns(){
+        for(int c = 0; c < gameBoard[0].length; c++){
+            if(gameBoard[0][c].equals("N") == false && gameBoard[0][c].equals(gameBoard[1][c]) && gameBoard[1][c].equals(gameBoard[2][c])){
+                return true;
+            }
+        }
+        return false;
+    }
 
 
-    //function to check diagonals
+    // function to check individual row
 
 
+    //function to check both diagonals
+
+   // function to check individual diagonal
 
     //master check function
 
 
 
 
-    //computer randomized function
+    //computer randomized selection function
 
 
 
