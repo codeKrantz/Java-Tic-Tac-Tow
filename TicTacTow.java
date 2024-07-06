@@ -244,6 +244,19 @@ return "None";
 }
     // cats game cheacker
 
+public boolean catsGameCheck(){
+    if (masterCheck().equals("None")) {
+        for(int r = 0; r < gameBoard.length; r++){
+            for(int c = 0; c < gameBoard[0].length; c++){
+                if(gameBoard[r][c].equals("N")){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    return false;
+}
 
 
     // set funciton
