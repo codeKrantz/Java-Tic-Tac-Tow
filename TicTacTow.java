@@ -197,10 +197,56 @@ public String checkIndividualDiagonal(String side){
     return "None";
 }
 
-    //master check function
+/*Master Check function
+ * Pre-Condition:
+ * All methods used in this work
+ * The board is filled with X, O, or N
+ * Post-Condtions:
+ * The winning letter will be returned
+ * None will be returned if there is no winner still
+ */
+public String masterCheck(){
+//starting with rows
+if(ckeckRows()){
+    for(int i = 0; i < 3; i++){
+        if(checkIndividualRow(i).equals("X")||checkIndividualRow(i).equals("O")){
+            return checkIndividualRow(i);
+        }
+    }
+}
+
+
+//columns next
+else if(ckeckColumns()){
+    for(int i = 0; i < 3; i++){
+        if(checkIndividualColumn(i).equals("X")||checkIndividualColumn(i).equals("O")){
+            return checkIndividualColumn(i);
+        }
+    }
+}
+
+
+//diagonals last
+else if(checkDiagonals()){
+    if(checkIndividualDiagonal("left").equals("X")||checkIndividualDiagonal("left").equals("O")){
+        return checkIndividualDiagonal("left");
+    }
+
+    else if(checkIndividualDiagonal("right").equals("X")||checkIndividualDiagonal("right").equals("O")){
+        return checkIndividualDiagonal("right");
+    }
+}
 
 
 
+
+return "None";
+}
+    // cats game cheacker
+
+
+
+    // set funciton
 
     //computer randomized selection function
 
