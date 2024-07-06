@@ -130,7 +130,7 @@ public class TicTacTow{
      returns true if there is a three in a row or returns false if there is none
      */
 
-   // function to check individual diagonal
+   
    public boolean checkDiagonals(){
     // Starting from the top left corner to the bottem right
     String[] left = new String[]{gameBoard[0][0], gameBoard[1][1], gameBoard[2][2]};
@@ -163,6 +163,39 @@ public class TicTacTow{
     return false;
 
    }
+
+
+
+/*
+ * Individual diagonal checker function
+ * Pre-Condition: 
+ * there is a three in a row for one of the diagonals
+ * side is a valid answer that is either left or right
+ * the board is filled with X, O, or N
+ * Post-Condtions:
+ * Returns X or O depending on who won
+ * Returns None if the diagnoal is not three in a row
+ */
+public String checkIndividualDiagonal(String side){
+    // Starting from the top left corner to the bottem right
+    String[] left = new String[]{gameBoard[0][0], gameBoard[1][1], gameBoard[2][2]};
+
+    //Starting from the top right corner and goes to the bottem left corner
+    String[] right = new String[] {gameBoard[0][2], gameBoard[1][1], gameBoard[2][0]};
+
+    if(side.equals("left")){
+        if(left[0].equals("N") == false && left[0].equals(left[1])&&left[1].equals(left[2])){
+            return left[0];
+        }
+    }
+    else if(side.equals("right")){
+        if(right[0].equals("N") == false && right[0].equals(right[1])&&right[1].equals(right[2])){
+            return right[0];
+        }
+    }
+    
+    return "None";
+}
 
     //master check function
 
