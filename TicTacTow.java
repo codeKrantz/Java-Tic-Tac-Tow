@@ -281,6 +281,22 @@ public boolean catsGameCheck(){
     }
 
     //computer randomized selection function
+    public void computerChoice(){
+        boolean acomplished = false;
+        if(catsGameCheck() == false){
+            while(acomplished != true){
+                int row = (int) (Math.random() * 3);
+                int col = (int) (Math.random() * 3);
+                if(gameBoard[row][col].equals("N")){
+                    gameBoard[row][col] = computerLetter;
+                    acomplished =  true;
+                }
+            }
+        }
+        
+
+
+    }
 
 
 
