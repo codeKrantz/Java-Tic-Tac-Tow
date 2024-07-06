@@ -259,7 +259,26 @@ public boolean catsGameCheck(){
 }
 
 
-    // set funciton
+    /*Player Setting Function
+     * Pre-Conditions:
+     * Numbers inputed will be acceptable to be put into the array
+     * Post-Conditions:
+     * The board will be updated based on the player's letter
+     * returns true if the function was able to go through 
+     * The function will NOT change an X or an O, only Ns
+     */
+    public boolean setLetter(int row, int col){
+        //decrimenting to fit the array's parameters
+        int r = row - 1;
+        int c = col - 1;
+        if(gameBoard[r][c].equals("N")){
+            gameBoard[r][c] = playerLetter;
+            return true;
+        }
+        
+        System.out.println("That space has already been taken!");
+        return false;
+    }
 
     //computer randomized selection function
 
