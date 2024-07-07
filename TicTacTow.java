@@ -19,6 +19,25 @@ public class TicTacTow{
     }
  
 
+// getter and setter methods
+public String getComputerLetter(){
+    return computerLetter;
+}
+
+public void setComputerLetter(String letter){
+    computerLetter =letter;
+}
+
+
+public String getPlayerLetter(){
+    return playerLetter;
+}
+
+
+public void setPlayerLetter(String letter){
+    playerLetter = letter;
+}
+
 
     // function to print the board
     public  void printBoard(){
