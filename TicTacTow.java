@@ -288,17 +288,36 @@ public boolean catsGameCheck(){
      * returns true if the function was able to go through 
      * The function will NOT change an X or an O, only Ns
      */
-    public boolean setLetter(int row, int col){
+    public void setLetter(){
         //decrimenting to fit the array's parameters
-        int r = row - 1;
-        int c = col - 1;
-        if(gameBoard[r][c].equals("N")){
-            gameBoard[r][c] = playerLetter;
-            return true;
-        }
+        System.out.println("Please select a row number with 1 being the top and 3 being the bottom.");
+        Scanner scanner = new Scanner(System.in);
+        int r = scanner.nextInt();
         
+        while(r != 1 && r != 2 && r != 3){
+            System.out.println("That was not a valid option! Please try again");
+             r = scanner.nextInt();
+        }
+
+        System.out.println("Please select a column number with 1 being the left and 3 being the right.");
+        int c = scanner.nextInt();
+        
+        while(r != 1 && r != 2 && r != 3){
+            System.out.println("That was not a valid option! Please try again");
+             c = scanner.nextInt();
+        }
+
+        //decrementing to fit the array parameters
+        r--;
+        c--;
+        
+        if(gameBoard[r][c].equals("N")){
+            gameBoard[r][c] = getPlayerLetter();
+            
+        }
+        else{
         System.out.println("That space has already been taken!");
-        return false;
+        setLetter();}
     }
 
     //computer randomized selection function
@@ -323,6 +342,7 @@ public boolean catsGameCheck(){
 
     //Full game function
     public void ticTacTow(){
+
         System.out.println("Please pick a letter X or O and enter it below");
         Scanner scanner = new Scanner(System.in);
         String player = scanner.nextLine().toUpperCase();
@@ -331,8 +351,40 @@ public boolean catsGameCheck(){
         while(player.equals("X") == false && player.equals("O") == false){
             System.out.println(player);
             System.out.println("That was not one of the choices! Please only type X or O");
-            player = scanner.nextLine().toUpperCase();
-           
+            player = scanner.nextLine().toUpperCase();  
         }
+// setting computer's letter
+        setPlayerLetter(player);
+        if(getPlayerLetter().equals("X")){
+            setComputerLetter("O");
+        }
+        else{
+            setComputerLetter("X");
+        }
+// The fist player goes if they are X so we must determine this
+        boolean humanFirst;
+        if(getPlayerLetter().equals("X")){
+            humanFirst = true;
+        }
+        else{
+            humanFirst = false;
+        }
+
+       
+        //game loop
+        while(catsGameCheck() == false && masterCheck().equals("None")){
+            if(humanFirst){
+                printBoard();
+                
+                setLetter();
+
+                if(catsGameCheck() == false && masterCheck().equals("None")){
+                    computerChoice();;
+                    printBoard();
+                    System.out.println("\n");
+                }
+            }
+        }
+
     }
 }
