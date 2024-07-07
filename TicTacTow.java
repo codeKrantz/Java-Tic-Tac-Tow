@@ -4,6 +4,8 @@ public class TicTacTow{
     private String[][] gameBoard;
     private String playerLetter;
     private String computerLetter;
+    private int playerWins;
+    private int computerWins;
     
     
     
@@ -18,6 +20,8 @@ public class TicTacTow{
         }
         playerLetter = player;
         computerLetter = computer;
+        playerWins = 0;
+        computerWins = 0;
     }
  
 
@@ -38,6 +42,23 @@ public String getPlayerLetter(){
 
 public void setPlayerLetter(String letter){
     playerLetter = letter;
+}
+
+public int getPlayerWins(){
+    return playerWins;
+}
+
+public void addPlayerWin(){
+    playerWins++;
+}
+
+
+public int getComputerWins(){
+    return computerWins;
+}
+
+public void addComputerWin(){
+    computerWins++;
 }
 
 
@@ -316,8 +337,9 @@ public boolean catsGameCheck(){
             
         }
         else{
-        System.out.println("That space has already been taken!");
-        setLetter();}
+            printBoard();
+            System.out.println("That space has already been taken!");
+            setLetter();}
     }
 
     //computer randomized selection function
@@ -342,6 +364,12 @@ public boolean catsGameCheck(){
 
     //Full game function
     public void ticTacTow(){
+
+        for(int r = 0; r < gameBoard.length; r++){
+            for(int c = 0; c < gameBoard[0].length; c++){
+                gameBoard[r][c] = "N";
+            }
+        }
 
         System.out.println("Please pick a letter X or O and enter it below");
         Scanner scanner = new Scanner(System.in);
@@ -375,7 +403,6 @@ public boolean catsGameCheck(){
         while(catsGameCheck() == false && masterCheck().equals("None")){
             if(humanFirst){
                 printBoard();
-                
                 setLetter();
 
                 if(catsGameCheck() == false && masterCheck().equals("None")){
@@ -384,7 +411,46 @@ public boolean catsGameCheck(){
                     System.out.println("\n");
                 }
             }
+            else{ // if Player is Os
+                computerChoice();
+                printBoard();
+
+                if(catsGameCheck() == false && masterCheck().equals("None")){
+                    setLetter();
+                }
+            }
+        }// end of loop
+
+        String winner = masterCheck();
+        if(winner.equals(getPlayerLetter())){
+            System.out.println("You Win!");
+            addPlayerWin();
         }
+        else if(winner.equals(getComputerLetter())){
+            System.out.println("The Computer Wins!");
+            addComputerWin();
+        }
+        else{
+            System.out.println("Cats Game! Nobody Wins.");
+        }
+// keepting track of score
+        System.out.println("Current scores bellow: \n Player: "+getPlayerWins()+"\nComputer: "+getComputerWins());
+
+        System.out.println("Would you like to play again? Enter Y or N");
+        String answer = scanner.nextLine();
+        while(answer.equals("Y") == false && answer.equals("N") == false){
+            System.out.println("Please only enter Y or N");
+            answer = scanner.nextLine();
+        }
+
+        if(answer.equals("Y")){
+            ticTacTow();
+        }
+
+        else{
+            System.out.println("Thanks for playing!");
+        }
+
 
     }
 }
