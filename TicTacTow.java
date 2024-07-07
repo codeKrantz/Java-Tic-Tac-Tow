@@ -1,3 +1,5 @@
+import java.util.Scanner;  // Import the Scanner class
+
 public class TicTacTow{
     private String[][] gameBoard;
     private String playerLetter;
@@ -319,5 +321,18 @@ public boolean catsGameCheck(){
 
 
 
-    //function to know if the board is completely filled
+    //Full game function
+    public void ticTacTow(){
+        System.out.println("Please pick a letter X or O and enter it below");
+        Scanner scanner = new Scanner(System.in);
+        String player = scanner.nextLine().toUpperCase();
+
+        //must be && to prevent an infanite loop
+        while(player.equals("X") == false && player.equals("O") == false){
+            System.out.println(player);
+            System.out.println("That was not one of the choices! Please only type X or O");
+            player = scanner.nextLine().toUpperCase();
+           
+        }
+    }
 }
